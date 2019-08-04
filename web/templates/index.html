@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet DeepZoom Demo</title>
+    <link rel="stylesheet" href="../static/leaflet.css" />
+    <style type="text/css">
+        html, body, #image2d {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="image2d"></div>
+    <script type="text/javascript" src="../static/leaflet.js"></script>
+    <script type="text/javascript" src="../static/leaflet-deepzoom.js"></script>
+    <script type="text/javascript">
+
+        var map = L.map('image2d').setView(new L.LatLng(0,0), 0);
+
+        var dzLayer = L.tileLayer.deepzoom('../static/DeepZoomImage/u1_files/', {
+            width: 42614,
+            height: 20767
+        }).addTo(map);
+
+		// Restrict to bounds
+		//map.setMaxBounds(bounds);
+		// Fit bounds
+		map.fitBounds(dzLayer.options.bounds);
+
+    </script>
+</body>
+</html>
